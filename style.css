@@ -1,15 +1,269 @@
+/* Global */
+
 * {
-  font-family: sans-serif;
   list-style: none;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
-html{
-    
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #404040;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  background-color: #f4f5f7;
 }
 
+h2 {
+  text-align: center;
+  margin: 3rem;
+  font-size: 3.5rem;
+  color: black;
+  font-family: "Roboto Condensed";
+}
+h3 {
+  text-align: center;
+}
+/* Cabeçalho */
+.logo {
+  width: 5.1rem;
+  border-radius: 1rem;
+}
+
+/* temporario */
+nav,
+.nome,
+.icones {
+  display: none;
+}
+
+.nome {
+  font-family: "Georgia", serif;
+}
+.style-header {
+  padding: 1.28rem 2.5rem;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 30%);
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, #eee6fe, #dab2e7);
+  z-index: 10;
+  padding: 1rem 2rem;
+}
+.nav {
+  margin: 0rem 0.8rem 0rem 0.8rem;
+}
+
+.icones img {
+  margin: 0rem 1rem 0rem 1rem;
+}
+/* .icones {
+  margin-left: 23.4rem;
+} */
+.Produtos,
+nav {
+  font-size: 1.8rem;
+  color: #404040;
+  text-decoration: none;
+}
 
 .Produtos {
-  
+  text-decoration: none;
+  position: relative;
+  margin: 2rem;
+  font-weight: 700;
+}
+
+.Produtos::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.2rem; /* espessura da linha */
+  bottom: 0;
+  left: 0;
+  background-color: currentColor; /* cor da linha igual ao texto */
+  transition: transform 0.3s ease;
+  transform: scaleX(0); /* linha começa invisível */
+  transform-origin: bottom right; /* ponto de partida da animação */
+}
+
+.Produtos:hover::after {
+  transform: scaleX(1); /* animação da linha */
+  transform-origin: bottom left; /* linha cresce da direita para a esquerda */
+}
+
+.icon {
+  width: 3.3rem;
+}
+/* Hero */
+.hero-carossel {
+  position: relative;
+}
+.secao-hero .banner {
+  width: 100%;
+}
+
+.seta-esquerda {
+  width: 3.3rem;
+  position: absolute;
+  left: 3rem;
+  bottom: 50%;
+  transform: translate(0, 50%);
+  transition: transform 0.3s ease;
+}
+.seta-direita {
+  width: 3.5rem;
+  position: absolute;
+  right: 3rem;
+  bottom: 50%;
+  transform: translate(0, 50%);
+  transition: transform 0.3s ease;
+}
+.seta-esquerda:hover {
+  transform: translate(0, 50%) scale(1.2);
+}
+.seta-direita:hover {
+  transform: translate(0, 50%) scale(1.2);
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.slide {
+  display: inline-block;
+  animation: 20s slide infinite linear;
+}
+.slide span {
+  font-size: 2rem;
+  padding: 0 3rem;
+  margin: 0 2rem;
+  color: #b88eb8; /* Tom neutro */
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.carousel-container {
+  background-color: white;
+  overflow: hidden;
+  padding: 2rem 0;
+  white-space: nowrap;
+  border-top: 0.2rem solid #c5c5c5;
+  border-bottom: 0.2rem solid #c5c5c5;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.faixa-lancamentos {
+  background-image: linear-gradient(
+    90deg,
+    #f5a7b7,
+    #dfbcea
+  ); /* Gradiente elegante */
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem; /* Espaçamento interno */
+  border-radius: 1rem; /* Bordas arredondadas */
+  margin: 2rem auto; /* Espaçamento externo */
+  max-width: 1200px; /* Largura máxima */
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.faixa-lancamentos h3 {
+  font-size: 2.5rem; /* Tamanho do título */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.faixa-lancamentos p {
+  font-size: 1.5rem; /* Tamanho da descrição */
+  margin: 0;
+  font-style: italic; /* Estilo para dar destaque */
+}
+
+/* secao produto */
+.secao-produtos {
+  padding: 0 7rem;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(25rem, 1fr)
+  ); /* Define 4 colunas responsivas */
+  gap: 2rem 0; /* Espaçamento entre os produtos */
+  justify-content: center; /* Centraliza os produtos horizontalmente */
+  padding: 2rem; /* Espaçamento interno */
+  max-width: 1200px; /* Define uma largura máxima para o container */
+  margin: 0 auto; /* Centraliza o container na página */
+}
+
+.Produto-catalogo {
+  background-color: white;
+  display: inline-block; /* Usado para criar um layout flexível */
+  flex-direction: column; /* Coloca os itens em coluna (vertical) */
+  align-items: center; /* Alinha os itens no centro horizontalmente */
+  justify-content: center; /* Alinha os itens no centro verticalmente */
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 10%);
+  width: 25rem;
+  height: 50rem; /* Define a altura do container, se necessário */
+  position: relative;
+  margin: 0 1rem;
+  transition: transform 0.2s ease;
+}
+
+.imagem_produto {
+  width: 23rem;
+  top: 0;
+  transition: transform 0.2s ease;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+
+}
+.Produto-catalogo:hover .imagem_produto{
+  transform: scale(1.03);
+}
+.texto_produto {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  word-wrap: break-word;
+  margin-top: 1rem;
+  text-align: center;
+}
+.texto_produto strong {
+  font-size: 2.2rem;
+  margin: 0.7rem 0;
+}
+
+.botao-produto {
+  margin: 1.5rem 0;
+  display: none;
+  font-size: 2rem;
+  color: white;
+  background-image: linear-gradient(90deg, #ddb4bd, #dfbcea);
+  padding: 0.6rem 2.2rem;
+  font-weight: bold;
+  border-radius: 0.6rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.Produto-catalogo:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0.2rem 2rem rgba(0, 0, 0, 0.15);
+}
+.Produto-catalogo:hover .botao-produto {
+  display: inline-block; /* Mostra o botão quando o mouse passar sobre o container */
+}
+.dentro {
+  position: absolute;
+  top: 1rem;
 }
