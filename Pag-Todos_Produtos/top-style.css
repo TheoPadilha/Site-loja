@@ -1,0 +1,163 @@
+* {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: "Montserrat", sans-serif;
+    color: #404040;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    background-color: #f4f5f7;
+  }
+  
+  .h2 {
+    text-align: center;
+    margin: 3rem;
+    font-size: 3.5rem;
+    color: rgb(87, 49, 70);
+    font-family: "Roboto Condensed";
+  }
+  h3 {
+    text-align: center;
+  }
+  
+  /* Cabeçalho */
+  #Novidades {
+    scroll-margin-top: 11rem;
+  }
+  .logo {
+    width: 5.1rem;
+    border-radius: 1rem;
+  }
+  
+  .nome h1 {
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    display: inline-block;
+    font-family: "Prata";
+    color: #464646;
+  }
+  
+  .style-header {
+    display: flex; /* Ativa Flexbox */
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: space-between; /* Espaço uniforme entre elementos */
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 30%);
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(90deg, #eee6fe, #dab2e7);
+    z-index: 10;
+    padding: 1rem 2rem;
+  }
+  .nav {
+    flex-grow: 1; /* Permite que o espaço ao redor da navegação se ajuste automaticamente */
+    text-align: center; /* Garante que os links fiquem centralizados */
+  }
+  
+  nav {
+    display: flex; /* Coloca os links lado a lado */
+    justify-content: center; /* Centraliza os links horizontalmente */
+    gap: 1.5rem; /* Espaçamento entre os links */
+  }
+  
+  .icones ul {
+    display: flex; /* Organiza os ícones lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 1.5rem; /* Espaçamento entre os ícones */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  .icones img {
+    margin: 0rem 1rem 0rem 1rem;
+  }
+  .icones {
+    margin-left: auto;
+  }
+  .icon:target {
+    overflow: hidden;
+  }
+  .Produtos {
+    text-decoration: none;
+    position: relative;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgb(56, 56, 56);
+    margin: 0 2rem;
+  }
+  
+  .Produtos::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0.25rem; /* espessura da linha */
+    bottom: 0;
+    left: 0;
+    background-color: currentColor; /* cor da linha igual ao texto */
+    transition: transform 0.3s ease;
+    transform: scaleX(0); /* linha começa invisível */
+    transform-origin: bottom right; /* ponto de partida da animação */
+  }
+  
+  .Produtos:hover::after {
+    transform: scaleX(1); /* animação da linha */
+    transform-origin: bottom left; /* linha cresce da direita para a esquerda */
+  }
+  
+  .icon {
+    width: 3.3rem;
+  }
+  
+  .searche-box:hover {
+    background-color: #eee6fe81;
+  }
+  .searche-box {
+    padding: 1rem;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.15s ease;
+  }
+  
+  .search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: black;
+    font-size: 1.6rem;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  .search-btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* .searche-box:active .search-txt{
+    width: 15rem;
+  } */
+  
+  .searche-box:focus-within {
+    background-color: #eee6fe; /* Garante que o fundo não perca a cor quando o campo estiver em foco */
+  }
+  .searche-box:focus-within .search-txt,
+  .search-txt:focus {
+    width: 25rem; /* Expande o campo de texto quando em foco */
+  }
+/* home */

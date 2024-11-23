@@ -9,6 +9,8 @@
 }
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 10rem;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -18,11 +20,11 @@ body {
   background-color: #f4f5f7;
 }
 
-h2 {
+.h2 {
   text-align: center;
   margin: 3rem;
   font-size: 3.5rem;
-  color: black;
+  color: rgb(87, 49, 70);
   font-family: "Roboto Condensed";
 }
 h3 {
@@ -55,6 +57,7 @@ h3 {
   background-image: linear-gradient(90deg, #eee6fe, #dab2e7);
   z-index: 10;
   padding: 1rem 2rem;
+  height: 7.2rem;
 }
 .nav {
   flex-grow: 1; /* Permite que o espaço ao redor da navegação se ajuste automaticamente */
@@ -64,23 +67,37 @@ h3 {
 nav {
   display: flex; /* Coloca os links lado a lado */
   justify-content: center; /* Centraliza os links horizontalmente */
-  gap: 1.5rem; /* Espaçamento entre os links */
+  gap: clamp(
+    1rem,
+    3vw,
+    7rem
+  ); /* Espaçamento que se ajusta ao tamanho da tela */
 }
 
 .icones ul {
   display: flex; /* Organiza os ícones lado a lado */
   align-items: center; /* Centraliza verticalmente */
-  gap: 1.5rem; /* Espaçamento entre os ícones */
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 0 2rem;
 }
 
 .icones img {
   margin: 0rem 1rem 0rem 1rem;
 }
-.icones {
-  margin-left: auto;
+
+.icon:target {
+  overflow: hidden;
+}
+.icon {
+  width: 3.3rem;
+}
+
+.Tres-riscos,
+.Tres-riscos1 {
+  display: none;
 }
 
 .Produtos {
@@ -89,14 +106,14 @@ nav {
   font-size: 1.8rem;
   font-weight: 700;
   color: rgb(56, 56, 56);
-  margin: 0 2rem;
+  margin: 0;
 }
 
 .Produtos::after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 0.23rem; /* espessura da linha */
+  height: 0.25rem; /* espessura da linha */
   bottom: 0;
   left: 0;
   background-color: currentColor; /* cor da linha igual ao texto */
@@ -108,10 +125,6 @@ nav {
 .Produtos:hover::after {
   transform: scaleX(1); /* animação da linha */
   transform-origin: bottom left; /* linha cresce da direita para a esquerda */
-}
-
-.icon {
-  width: 3.3rem;
 }
 
 .searche-box:hover {
@@ -162,7 +175,7 @@ nav {
   position: relative;
 }
 .secao-hero .banner {
-  width: 100vw;
+  width: 100%;
 }
 
 .seta-esquerda {
@@ -274,58 +287,81 @@ nav {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-/* secao produto */
+/* Seção produto */
 .secao-produtos {
-  padding: 0 7rem;
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(25rem, 1fr)
-  ); /* Define 4 colunas responsivas */
-  gap: 2rem 0; /* Espaçamento entre os produtos */
+  display: flex; /* Define o contêiner como Flexbox */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
   justify-content: center; /* Centraliza os produtos horizontalmente */
+  align-items: center; /* Centraliza os produtos verticalmente */
+  gap: 2rem; /* Espaçamento uniforme entre os itens */
   padding: 2rem; /* Espaçamento interno */
   max-width: 1200px; /* Define uma largura máxima para o container */
   margin: 0 auto; /* Centraliza o container na página */
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+}
+
+.secao-produtos > * {
+  flex: 1 1 25rem; /* Itens flexíveis com largura mínima de 25rem */
+  max-width: 25rem; /* Impede que os itens fiquem maiores que 25rem */
+  margin: 0.5rem; /* Espaçamento adicional entre os itens */
+  box-sizing: border-box; /* Inclui padding e borda no tamanho total */
 }
 
 .Produto-catalogo {
   background-color: white;
-  display: inline-block; /* Usado para criar um layout flexível */
-  flex-direction: column; /* Coloca os itens em coluna (vertical) */
-  align-items: center; /* Alinha os itens no centro horizontalmente */
-  justify-content: center; /* Alinha os itens no centro verticalmente */
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 1rem;
   box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 10%);
   width: 25rem;
-  height: 50rem; /* Define a altura do container, se necessário */
+  height: 54rem; /* Define a altura do container, se necessário */
   position: relative;
   margin: 0 1rem;
   transition: transform 0.2s ease;
 }
 
 .imagem_produto {
-  width: 23rem;
-  top: 0;
+  width: 100%;
+  padding: 1rem 1rem;
   transition: transform 0.2s ease;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
 }
 .Produto-catalogo:hover .imagem_produto {
   transform: scale(1.01);
 }
+.texto_produto,
+.preço-ant,
+.preço-atual {
+  text-align: center;
+}
+
 .texto_produto {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   color: black;
   word-wrap: break-word;
   margin-top: 1rem;
-  text-align: center;
 }
-.texto_produto strong {
-  font-size: 2.2rem;
-  margin: 0.7rem 0;
+
+.preço-ant {
+  font-size: 1.4rem;
+  color: #c4677b;
+  text-decoration: line-through;
+  transform: translateY(0.5rem);
+  margin: 0;
+}
+.preço-atual {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #b8336a;
+}
+.preço-ant + .preço-atual {
+  margin-top: 0;
 }
 
 .botao-produto {
@@ -333,13 +369,35 @@ nav {
   display: none;
   font-size: 2rem;
   color: white;
-  background-image: linear-gradient(90deg, #ddb4bd, #dfbcea);
+  background: linear-gradient(90deg, #ddb4bd, #dfbcea);
   padding: 0.6rem 2.2rem;
   font-weight: bold;
   border-radius: 0.6rem;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  transition: background-color 0.3s ease-in-out;
+  overflow: hidden; /* Garantir que pseudo-elementos não "escapem" */
+}
+
+.botao-produto::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #ddb4bd, #dfbcea); /* Gradiente inicial */
+  z-index: -1; /* Coloca atrás do texto do botão */
+  transition: opacity 0.1s ease-in-out; /* Transição suave para gradiente */
+  opacity: 1; /* Gradiente visível inicialmente */
+}
+
+.botao-produto:hover::before {
+  opacity: 0; /* Gradiente desaparece suavemente */
+}
+.botao-produto:hover {
+  background: linear-gradient(90deg, #d8607a, #e27f8c);
 }
 .Produto-catalogo:hover {
   transform: translateY(-10px);
@@ -350,5 +408,397 @@ nav {
 }
 .dentro {
   position: absolute;
-  top: 1rem;
+  top: 0rem;
+}
+
+/* secao rodape */
+
+.input-single {
+  margin: 3rem 0;
+  position: relative;
+}
+.input-single label {
+  font-size: 1.6rem;
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  color: rgb(99, 98, 98);
+  cursor: text;
+  transition: 0.2s ease-in-out;
+}
+.input-single .input-rodape {
+  width: 100%;
+  padding: 0.5rem;
+  color: rgb(62, 62, 62);
+  border: 0;
+  border-bottom: 0.2rem solid rgb(200, 200, 200);
+  background: transparent;
+  outline: 0;
+  font-size: 1.6rem;
+}
+.input-single .input-rodape:focus,
+.input-single .input-rodape:valid {
+  border-bottom: 0.2rem solid #e91e63;
+}
+
+.input-single .input-rodape:not(:placeholder-shown) {
+  caret-color: initial; /* Mostra o cursor quando o usuário começa a digitar */
+}
+
+.input-single .input-rodape:placeholder-shown ~ label {
+  display: block; /* Label visível */
+}
+
+.input-single .input-rodape:not(:placeholder-shown) ~ label {
+  display: none; /* Label escondido enquanto o usuário digita */
+}
+
+.rodape {
+  background-color: #f6daff;
+  width: 100%;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #333;
+}
+
+.cadastro {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width: 45rem;
+}
+
+.cadastro h2 {
+  font-size: 2rem;
+  color: #2a2a2a;
+  margin-bottom: 1rem;
+}
+
+.cadastro p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.input-rodape {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  color: #333;
+}
+
+.botao-cadastro {
+  padding: 1rem 2rem;
+  background-color: #e91e63;
+  color: #fff;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.botao-cadastro:hover {
+  background-color: #aa083e;
+}
+
+/* novo */
+
+.rodape {
+  background-color: #f6daff;
+  padding: 4rem 2rem;
+  color: #333;
+  text-align: center;
+}
+
+.input-single {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-single label {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  color: rgb(99, 98, 98);
+  font-size: 1.4rem;
+  transition: 0.2s ease-in-out;
+}
+
+.input-rodape {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.info-contato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.informacoes,
+.contato {
+  flex: 1 1;
+  margin: 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.informacoes h3,
+.contato h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #2a2a2a;
+}
+
+.informacoes ul {
+  list-style: none;
+  padding: 0;
+}
+
+.informacoes ul li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+  line-height: 2;
+}
+
+.informacoes ul li a:hover {
+  color: #e91e63;
+}
+
+.redes-sociais {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.redes-sociais a {
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+
+.rodape-final {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #777;
+}
+.icone-rodape:hover svg {
+  fill: #e91e63;
+  transition: 0.2s ease;
+}
+.email a {
+  color: #333;
+}
+.email a:hover {
+  color: #e91e63;
+}
+.zapzap {
+  position: fixed;
+  bottom: -1.5rem;
+  right: 1rem;
+  width: 5rem;
+  margin: 0;
+  padding: 0;
+}
+.zapzap:hover {
+  fill: rgb(3, 179, 3);
+  transition: 0.15s ease;
+}
+@media screen and (max-width: 1450px) {
+  .bag,
+  .login,
+  .searche-box {
+    display: none;
+  }
+  .Tres-riscos {
+    display: flex;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .style-header {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: space-between; /* Espaço entre os itens nas extremidades */
+    align-items: center; /* Centraliza verticalmente */
+  }
+  .icones {
+    display: flex; /* Torna o contêiner flexível */
+    justify-content: flex-end; /* Empurra todos os itens para a direita */
+    align-items: center; /* Centraliza verticalmente os itens */
+    gap: 0.5rem; /* Espaçamento entre os ícones */
+  }
+  .nome,
+  .nome h1 {
+    flex: 1; /* Permite que o nome ocupe o espaço central */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    margin: 0;
+  }
+
+  .icones .searche-box,
+  .icones .icon,
+  .Tres-riscos1 {
+    display: flex; /* Garante que os ícones sejam exibidos */
+  }
+  .nav,
+  .icones .Tres-riscos {
+    display: none; /* Esconde a navegação */
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  /* CLasses gerais */
+
+  /* Cabeçalho */
+
+  .logo {
+    display: none;
+  }
+
+  /* hero */
+  .h2 {
+    font-size: 2rem;
+  }
+
+  /* Secao slide/carrousel */
+  .slide span {
+    font-size: 1.6rem;
+  }
+  .carousel-container {
+    padding: 1.5rem 0;
+  }
+  .faixa-lancamentos h3 {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .faixa-lancamentos p {
+    margin: 1.5rem 0rem;
+    font-size: 1.4rem;
+  }
+  /* Secao Produtos */
+
+  /* Secao rodape */
+}
+@media (max-width: 1179px) {
+  .secao-produtos {
+    gap: 2rem; /* Reduz o espaçamento entre os itens */
+    padding: 1rem;
+  }
+
+  .secao-produtos > * {
+    flex: 1 1 18rem; /* Reduz a largura mínima */
+    max-width: 21rem;
+    min-width: 21rem;
+    margin: 0.5rem; /* Reduz o espaço ao redor de cada item */
+    max-height: 48rem;
+    min-height: 48rem;
+  }
+  .texto_produto {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .secao-produtos {
+    gap: 2rem; /* Diminui o espaçamento entre os itens na grade */
+    padding: 1rem; /* Reduz o espaçamento interno do container */
+  }
+  .nome h1 {
+    font-size: 2rem;
+  }
+  .secao-produtos > * {
+    max-width: 19rem; /* Ajusta o tamanho máximo */
+    min-width: 19rem; /* Ajusta o tamanho máximo */
+    margin: 0.25rem; /* Reduz o espaço individual ao redor dos itens */
+    max-height: 44rem;
+    min-height: 44rem;
+  }
+  .texto_produto {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 700px) {
+  .icones .searche-box {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .secao-produtos {
+    gap: 2rem 1rem; /* Diminui o espaçamento entre os itens */
+    padding: 1rem 0.5rem; /* Reduz o espaçamento interno da seção */
+  }
+
+  .secao-produtos > * {
+    margin: 0.25rem; /* Reduz o espaço individual entre os itens */
+    max-width: 16rem; /* Ajusta a largura */
+    min-width: 16rem; /* Ajusta a largura */
+    max-height: 40rem; /* Altura reduzida */
+    min-height: 40rem; /* Altura reduzida */
+  }
+  .texto_produto {
+    font-size: 0.9rem;
+  }
+  .nome h1 {
+    font-size: 2rem;
+    margin: 0 auto;
+  }
+  .icones .searche-box {
+    display: none;
+  }
+  .icones ul {
+    gap: 1rem;
+  }
+  .style-header {
+    padding: 1rem;
+  }
+  .icones .icon {
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 344px) {
+  .secao-produtos {
+    gap: 2rem 1rem; /* Diminui o espaçamento entre os itens */
+    padding: 0; /* Reduz o espaçamento interno da seção */
+  }
+
+  .secao-produtos > * {
+    margin: 0; /* Reduz o espaço individual entre os itens */
+    max-width: 14rem; /* Ajusta a largura */
+    min-width: 14rem; /* Ajusta a largura */
+    max-height: 37rem; /* Altura reduzida */
+    min-height: 37rem; /* Altura reduzida */
+  }
+  .texto_produto {
+    font-size: 0.8rem;
+  }
+  .nome h1 {
+    font-size: 1.6rem;
+    margin-left: 2rem;
+  }
+
+  .icones ul {
+    gap: 0.5rem;
+  }
+  .style-header {
+    padding: 1rem;
+  }
+  .icones .icon {
+    margin: 0 0.5rem;
+  }
 }
