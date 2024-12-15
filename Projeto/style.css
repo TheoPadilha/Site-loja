@@ -171,6 +171,18 @@ nav {
 }
 
 /* Hero */
+.slide_banner {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Transição fluida */
+  width: 200%; /* Ajuste conforme a quantidade de imagens */
+}
+
 .hero-carossel {
   position: relative;
 }
@@ -711,6 +723,9 @@ nav {
   .texto_produto {
     font-size: 1.2rem;
   }
+  .botao-produto {
+    display: flex;
+  }
 }
 
 @media (max-width: 768px) {
@@ -781,8 +796,8 @@ nav {
     margin: 0; /* Reduz o espaço individual entre os itens */
     max-width: 14rem; /* Ajusta a largura */
     min-width: 14rem; /* Ajusta a largura */
-    max-height: 37rem; /* Altura reduzida */
-    min-height: 37rem; /* Altura reduzida */
+    max-height: 36rem; /* Altura reduzida */
+    min-height: 36rem; /* Altura reduzida */
   }
   .texto_produto {
     font-size: 0.8rem;
