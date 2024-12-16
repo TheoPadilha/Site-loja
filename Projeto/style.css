@@ -170,6 +170,16 @@ nav {
   width: 25rem; /* Expande o campo de texto quando em foco */
 }
 
+.bag:hover{
+  transform: scale(1.1);
+  transition: transform 0.1s linear;
+}
+.login:hover{
+  transform: scale(1.1);
+  transition: transform 0.1s linear;
+}
+
+
 /* Hero */
 .slide_banner {
   display: flex;
@@ -207,7 +217,7 @@ nav {
   transition: transform 0.3s ease;
 }
 .seta-esquerda:hover {
-  transform: translate(0, 50%) scale(1.2);
+  transform: translate(0, 50%) (1.2)scale;
 }
 .seta-direita:hover {
   transform: translate(0, 50%) scale(1.2);
@@ -297,6 +307,40 @@ nav {
   font-size: 2rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/011/491/432/original/organic-shapes-art-backgrounds-on-pastel-color-trendy-modern-organic-shapes-with-copy-space-text-suitable-for-banner-poster-promotion-advertisement-flyer-or-template-free-vector.jpg);
+  padding: 4rem;
+}
+
+.category {
+  display: flex;
+  margin: 2rem;
+  border-radius: 12px;
+  width: 25rem;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.category img:hover,
+.category:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.category img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 /* Seção produto */

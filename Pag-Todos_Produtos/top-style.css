@@ -161,3 +161,7 @@
     width: 25rem; /* Expande o campo de texto quando em foco */
   }
 /* home */
+.banner img{
+
+  width: 100%;
+}
